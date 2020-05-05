@@ -1,4 +1,5 @@
 from tkinter import *
+from school_content import * 
 
 
 def main():
