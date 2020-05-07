@@ -30,6 +30,24 @@ class student:
         self.student_id = student_id
         self.email = email
         self.assignments = assignments 
+
+    def set_name(self, name):
+        self.name = name
+    
+    def set_id(self, student_id):
+        self.student_id = student_id
+    
+    def set_email(self, email):
+        self.email = email
+
+    def get_name(self):
+        return self.name 
+    
+    def get_id(self):
+        return self.student_id
+    
+    def get_email(self):
+        return self.email 
     
     def add_assignment(self): 
         # adds an 'assignment' object to the 'assignments' list
