@@ -30,24 +30,6 @@ class student:
         self.student_id = student_id
         self.email = email
         self.assignments = assignments 
-
-    def set_name(self, name):
-        self.name = name
-    
-    def set_id(self, student_id):
-        self.student_id = student_id
-    
-    def set_email(self, email):
-        self.email = email
-
-    def get_name(self):
-        return self.name 
-    
-    def get_id(self):
-        return self.student_id
-    
-    def get_email(self):
-        return self.email 
     
     def add_assignment(self): 
         # adds an 'assignment' object to the 'assignments' list
@@ -59,8 +41,27 @@ class student:
         new_assignment = assignment(t, d, total, pts) 
         self.assignments.append(new_assignment) 
 
+    '''
+    We will sort the student's assignments by grade using quicksort. We need a swap() function
+    and an overloaded greater-than operator to do this. The greater-than operator will be in
+    the 'assignment' class. 
+    '''
 
-    def sort_by_grades(self):
-        # sorts the students by their grades
-        # the algorithm used is quick sort
+    def swap(self, n1, n2):
+        # swaps assignments[n1] with assignments[n2]
+        self.assignments[n1], self.assignments[n2] = self.assignments[n2], self.assignments[n1] 
+
+    def partition(self, l, h):
         pass 
+
+    def sort_grades(self, l, h):
+        '''
+        This function sorts the student's grades from lowest to highest. 
+        Their grades are stored in the "assignments" list; each "assignment" 
+        object has a grade. The algorithm used will be quick sort.
+        l: lowest index in array, h: highest index in array
+        '''
+        if l < h:
+            pivot = self.partition(l, h)
+            self.sort_grades(l, pivot - 1) 
+            self.sort_grades(pivot + 1, h) 
