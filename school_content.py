@@ -59,8 +59,8 @@ class student:
         # swaps assignments[n1] with assignments[n2]
         temp = self.assignments[n1]
         self.assignments[n1] = self.assignments[n2]
-        self.assignments[n2] = self.assignments[n1] 
-        
+        self.assignments[n2] = temp 
+
     def partition(self, l, h):
         pivot = self.assignments[h-1]
         i = l - 1
