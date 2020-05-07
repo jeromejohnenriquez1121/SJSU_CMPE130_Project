@@ -39,7 +39,7 @@ class assignment:
         print("Grade: " + self.grade) 
 
 class student: 
-    def __init__(self, name, student_id, email, assignments): 
+    def __init__(self, name, student_id, email, assignments=[]): 
         self.name = name
         self.student_id = student_id
         self.email = email
@@ -50,23 +50,25 @@ class student:
         # the 'assignment' values are user-inputted
         t = input("Assignment Title: ")
         d = input("Assignment Deadline: ")
-        total = input("Total Points Possible on Assignment: ")
-        pts = input("Points Earned: ")
+        total = float(input("Total Points Possible on Assignment: "))
+        pts = float(input("Points Earned: ")) 
         new_assignment = assignment(t, d, total, pts) 
         self.assignments.append(new_assignment) 
 
     def swap(self, n1, n2):
         # swaps assignments[n1] with assignments[n2]
-        self.assignments[n1], self.assignments[n2] = self.assignments[n2], self.assignments[n1] 
+        temp = self.assignments[n1]
+        self.assignments[n1] = self.assignments[n2]
+        self.assignments[n2] = self.assignments[n1] 
 
     def partition(self, l, h):
-        pivot = self.assignments[h]
+        pivot = self.assignments[h-1]
         i = l - 1
         for j in range(l, h):
             if (self.assignments[j] < pivot):
                 i += 1
-                self.swap(self.assignments[i], self.assignments[j]) 
-                
+                self.swap(i, j) # swaps self.assignments[i] with self.assignments[j]  
+
         self.swap(self.assignments[i+1], self.assignments[h]) 
         return i + 1
 
@@ -78,6 +80,6 @@ class student:
         l: lowest index in array, h: highest index in array
         '''
         if l < h:
-            pivot = self.partition(l, h)
+            pivot = self.partition(l, h-1)
             self.sort_grades(l, pivot - 1) 
-            self.sort_grades(pivot + 1, h) 
+            self.sort_grades(pivot + 1, h-1)  
