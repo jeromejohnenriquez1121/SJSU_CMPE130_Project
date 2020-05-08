@@ -69,6 +69,9 @@ class student:
     def get_average(self):
         # get average grade
         avg = 0
+        # print list of grades on one line to remind student
+        temp = self.grades
+        print(*temp) 
         # first, multiply each grade by its weight
         # next, add up the numbers
         wt = float(input("Grade Weight (e.g. for 20% weight, type 0.2): "))
