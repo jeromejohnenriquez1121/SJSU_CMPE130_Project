@@ -5,11 +5,13 @@ address, an ID number, and a list of grades. The students can be sorted by their
 or their ID numbers; their grades can also be sorted from lowest to highest, in order to 
 easily get each student's grade quartiles and average grade. 
 
-We will sort the student's grades using the sort_grades() function; the algorithm 
-used will be quicksort. We need a swap() function and an overloaded less-than operator to do this. 
-The less-than operator will be in the 'assignment' class; the swap() function will be in the 
-'student' class.
+We will sort the student's grades using a specialized sorting class; the algorithm 
+used will be quicksort. 
 '''     
+
+class QuickSort:
+    pass 
+
 
 class student: 
     def __init__(self, name, student_id, email, grades=[]): 
@@ -37,10 +39,18 @@ class student:
     def sort_grades(self, l, h):
         '''
         This function sorts the student's grades from lowest to highest. 
-        Their grades are stored in the "assignments" list; each "assignment" 
-        object has a grade. The algorithm used will be quick sort.
+        Their grades are stored in the "grades" list. The algorithm used 
+        will be quick sort, so we'll use the QuickSort class in the function.
         l: lowest index in array, h: highest index in array
         '''
         pass  
 
     # TODO: calculate grade quartiles and avg grade
+
+    def get_grade_quartiles(self):
+        # calculate grade quartiles
+        pass
+
+    def get_average(self):
+        # get average grade
+        pass 
