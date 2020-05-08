@@ -9,12 +9,11 @@ saima = student("Saima Yunus", "012257752", "saima.yunus@sjsu.edu")
 
 n2 = int(input("# OF ASSIGNMENTS: "))
 for j in range(n2):
-    saima.add_assignment()
+    saima.add_grade()
+ 
 
-n3 = len(saima.assignments) 
+saima.sort_grades(0, n2) 
 
-saima.sort_grades(0, n3-1)  
+print(saima.grades) 
 
-for assignment in saima.assignments:
-    assignment.print_assignment() 
 
