@@ -70,22 +70,24 @@ class student:
     def calculate_average(self):
         # get average grade
         avg_grade = 0
+        # we must divide sum of weighted grades by sum of weights
+        grade_sum = 0
+        wt_sum = 0 
         # print list of grades on one line to remind student
         temp = self.grades
         print(*temp) 
         # first, multiply each grade by its weight
         # next, add up the numbers
-        wt = float(input("Grade Weight (e.g. for 20% weight, type 0.2): "))
         for grade in self.grades:
+            wt = float(input(f"Grade Weight (e.g. for 20% weight, type 0.2) for {grade}: ")) 
             grade *= wt
-            avg_grade += grade 
-        # finally, store value in 'avg' variable
+            grade_sum += grade # remember, grade_sum: sum of WEIGHTED grades
+            wt_sum += wt  
+        # finally, do the division and store result in 'avg' variable
+        avg_grade = grade_sum / wt_sum 
         self.avg = avg_grade 
     
     def get_average(self):
         return self.avg  
-
-
-
 
 
