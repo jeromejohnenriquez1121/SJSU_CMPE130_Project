@@ -11,7 +11,22 @@ student class will make use of this function.
 '''
 
 class QuickSort: 
-    pass 
+    # only two functions needed: partition and quicksort
+    # 'collection': the array to be sorted
+    def partition(self, collection, lo, hi):
+        # hi = len(collection) - 1
+        j = self.lo # collection[j] and everything behind it must be less than pivot
+        pivot = self.hi # selecting last item as pivot
+        # what do we know? We know that we must go from lo to hi, until we find an item less than the pivot
+        # we use i and j for this, i is in the for loop, j is the index for most recent element < pivot element
+        for i in range(lo, hi):
+            if (self.collection[i] < self.collection[j]):
+                
+        # when collection[i] < collection[pivot], we've found a left partition item
+        # we swap collections[i] and collections[j], so now j is the first element < pivot
+        # after the for-loop, pivot should be in its correct position
+        # all items to its left must be less than it, al items to its right must be greater than it
+
 
 class student: 
     def __init__(self, name, student_id, email, grades=[]): 
