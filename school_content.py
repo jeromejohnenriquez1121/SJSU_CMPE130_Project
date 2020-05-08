@@ -55,13 +55,14 @@ class student:
         letter_grade = (pts / total) * 100 
         self.grades.append(letter_grade) 
 
-    # TODO: quick sort 
     # calls quicksort function from SelectionSort class
     def sort_grades(self):
         n = len(self.grades) 
         QuickSort().quicksort(self.grades, 0, n-1)  
  
-    # TODO: calculate grade quartiles and avg grade
+    # TODO: calculate grade quartiles 
+    # TODO: write function that shows if student is doing well or needs improvement
+
 
     def get_grade_quartiles(self):
         # calculate grade quartiles
@@ -87,4 +88,20 @@ class student:
     def get_average(self):
         return self.avg  
 
+    def student_status(self):
+        # compares average grade with passing grade
+        # any grade below passing - 'need to improve'
+        # 70-79: 'ok, but could be better'
+        # 80-89: 'ok/good'
+        # 90-99: 'excellent/amazing' 
+        passing = 70.00     
+        temp_name = self.name
+        if (self.avg < passing):
+            print(f"{temp_name} has a low grade in the class and needs to improve. They should do the assignments and try to get high scores on the exams to raise their grade")
+        elif (self.avg >= passing and self.avg <= 79):
+            print(f"{temp_name} is passing the class, but could be doing much better. They should keep up with the assignments and study hard for the exams.")
+        elif (self.avg >= 80 and self.avg <= 89):
+            print(f"{temp_name} has a good grade in the class and can bump it up to an A if they do well in the exams.")
+        else:
+            print(f"{temp_name}'s grade is excellent! To keep it up, they should still try and do well on the exams.") 
 

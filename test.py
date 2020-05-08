@@ -33,3 +33,5 @@ print(saima.grades)
 saima.calculate_average()
 avg = saima.get_average() 
 print(f"Average: {avg}") 
+
+# third test: show if student is doing well or not
