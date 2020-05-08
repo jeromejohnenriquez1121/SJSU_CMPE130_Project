@@ -40,11 +40,12 @@ class QuickSort:
 
 
 class student: 
-    def __init__(self, name, student_id, email, grades=[]): 
+    def __init__(self, name, student_id, email, grades=[], avg=0): 
         self.name = name
         self.student_id = student_id
         self.email = email
         self.grades = grades
+        self.avg = avg
     
     def add_grade(self): 
         # adds a grade to the 'grades' list
@@ -66,9 +67,9 @@ class student:
         # calculate grade quartiles
         pass
 
-    def get_average(self):
+    def calculate_average(self):
         # get average grade
-        avg = 0
+        avg_grade = 0
         # print list of grades on one line to remind student
         temp = self.grades
         print(*temp) 
@@ -77,8 +78,12 @@ class student:
         wt = float(input("Grade Weight (e.g. for 20% weight, type 0.2): "))
         for grade in self.grades:
             grade *= wt
-            avg += grade 
-        return avg  
+            avg_grade += grade 
+        # finally, store value in 'avg' variable
+        self.avg = avg_grade 
+    
+    def get_average(self):
+        return self.avg 
 
 
 
