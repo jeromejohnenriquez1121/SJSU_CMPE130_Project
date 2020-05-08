@@ -83,7 +83,7 @@ class student:
         self.avg = avg_grade 
     
     def get_average(self):
-        return self.avg 
+        return self.avg  
 
 
 
