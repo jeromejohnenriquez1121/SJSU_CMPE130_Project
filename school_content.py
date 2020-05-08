@@ -52,7 +52,7 @@ class student:
         print("--------------") 
         total = float(input("Total Points Possible on Assignment: "))
         pts = float(input("Points Earned: ")) 
-        letter_grade = pts / total 
+        letter_grade = (pts / total) * 100 
         self.grades.append(letter_grade) 
 
     # TODO: quick sort 
@@ -73,9 +73,6 @@ class student:
         # we must divide sum of weighted grades by sum of weights
         grade_sum = 0
         wt_sum = 0 
-        # print list of grades on one line to remind student
-        temp = self.grades
-        print(*temp) 
         # first, multiply each grade by its weight
         # next, add up the numbers
         for grade in self.grades:
