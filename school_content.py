@@ -5,12 +5,12 @@ address, an ID number, and a list of grades. The students can be sorted by their
 or their ID numbers; their grades can also be sorted from lowest to highest, in order to 
 easily get each student's grade quartiles and average grade. 
 
-We will sort each student's grades with the insertion sort algorithm; the specialized InsertionSort() 
+We will sort each student's grades with the quick sort algorithm; the specialized QuickSort() 
 class will take in any array of numbers and sort them. The sort_grades() function in our
 student class will make use of this function.
 '''
 
-class InsertionSort:
+class QuickSort: 
     pass 
 
 class student: 

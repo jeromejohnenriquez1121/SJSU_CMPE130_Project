@@ -2,6 +2,6 @@
 
 # we want to see if our quicksort function works
 
-from school_content import student, InsertionSort 
+from school_content import student
 
 # code 
