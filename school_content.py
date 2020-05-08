@@ -32,14 +32,7 @@ class student:
         self.grades[n2] = temp 
 
     def partition(self, l, h):
-        pivot = self.grades[h-1] 
-        i = l - 1
-        for j in range(l, h):
-            if (self.grades[j] < pivot): 
-                i += 1
-                self.swap(i, j) 
-        self.swap(i+1, h)   
-        return i + 1
+        pass 
 
     def sort_grades(self, l, h):
         '''
@@ -48,9 +41,6 @@ class student:
         object has a grade. The algorithm used will be quick sort.
         l: lowest index in array, h: highest index in array
         '''
-        if l < h:
-            pivot = self.partition(l, h-1)
-            self.sort_grades(l, pivot - 1) 
-            self.sort_grades(pivot + 1, h-1)  
+        pass  
 
     # TODO: calculate grade quartiles and avg grade
