@@ -36,7 +36,7 @@ class assignment:
     def print_assignment(self):
         print("Assignment: " + self.assignment_title)
         print("Due Date: " + self.due_date)
-        print("Grade: " + self.grade) 
+        print(f"Grade: {self.grade}") 
 
 class student: 
     def __init__(self, name, student_id, email, assignments=[]): 
@@ -69,7 +69,7 @@ class student:
                 i += 1
                 self.swap(i, j) # swaps self.assignments[i] with self.assignments[j]  
 
-        self.swap(self.assignments[i+1], self.assignments[h]) 
+        self.swap(i+1, h)   
         return i + 1
 
     def sort_grades(self, l, h):

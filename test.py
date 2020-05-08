@@ -15,5 +15,6 @@ n3 = len(saima.assignments)
 
 saima.sort_grades(0, n3-1)  
 
-print(saima.assignments) 
+for assignment in saima.assignments:
+    assignment.print_assignment() 
 
