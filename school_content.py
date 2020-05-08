@@ -5,12 +5,12 @@ address, an ID number, and a list of grades. The students can be sorted by their
 or their ID numbers; their grades can also be sorted from lowest to highest, in order to 
 easily get each student's grade quartiles and average grade. 
 
-We will sort each student's grades with the selection sort algorithm; the specialized selectionsort() 
+We will sort each student's grades with the insertion sort algorithm; the specialized InsertionSort() 
 class will take in any array of numbers and sort them. The sort_grades() function in our
 student class will make use of this function.
 '''
 
-class SelectionSort:
+class InsertionSort:
     pass 
 
 class student: 
@@ -25,14 +25,14 @@ class student:
         print("--------------") 
         total = float(input("Total Points Possible on Assignment: "))
         pts = float(input("Points Earned: ")) 
-        letter_grade = pts / total
+        letter_grade = pts / total 
         self.grades.append(letter_grade) 
 
-    # TODO: quick sort
-    # calls quicksort function from QuickSort class
+    # TODO: selection sort 
+    # calls selection_sort function from SelectionSort class
     def sort_grades(self):
         n = len(self.grades) 
-        QuickSort().quicksort(self.grades, 0, n) 
+        # QuickSort().quicksort(self.grades, 0, n) 
  
     # TODO: calculate grade quartiles and avg grade
 
@@ -42,7 +42,15 @@ class student:
 
     def get_average(self):
         # get average grade
-        pass 
+        avg = 0
+        # first, multiply each grade by its weight
+        # next, add up the numbers
+        wt = float(input("Grade Weight (e.g. for 20% weight, type 0.2): "))
+        for grade in self.grades:
+            grade *= wt
+            avg += grade 
+        return avg  
+
 
 
 
