@@ -1,5 +1,7 @@
+from tkinter import *
 from school_content import QuickSort, student
 from hashing_function import StudentHashTable
+import NumPy as np
 
 def main():
     print("Welcome to Classroomverse")
@@ -16,15 +18,17 @@ def main():
             studentList.insertStudent()
 
         elif option == 2:
-            studentList.getStudentInfo()
+            id = int(input("Enter ID: "))
+            temp = studentList.getStudent(id)
+            temp.student_status()
 
         elif option == 3:
-            temp = studentList.make_student()
+            id = int(input("Enter ID: "))
+            temp = studentList.getStudent(id)
             temp.calculate_grade_quartiles()
         elif option == 4:
-            studentList.sort_grades()
+            id = int(input("Enter ID: "))
+            temp = studentList.getStudent(id)
+            temp.student_status
         else:
             print("Please enter a number that follows one of the options.")
-
-if __name__ == '__main__':
-    main()
