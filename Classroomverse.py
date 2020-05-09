@@ -1,44 +1,31 @@
 from tkinter import *
-from school_content import * 
-
+from school_content import QuickSort, student
+from hashing_function import StudentHashTable
 
 def main():
-    root = Tk()
-    root.title('Classroomverse')
-    root.geometry('853x480')
-    root.configure(bg='white')
+    print("Welcome to Classroomverse")
+    studentList = StudentHashTable()
+    option = 0
+    while option != 8:
+        option = int(input('1. Add student information: \n'
+                           '2. Display student information: \n'
+                           '3. Get Quartiles\n'
+                           '4. Display and Sort Grades\n'
+                           '5. Quit\n'
+                           'Enter option: '))
+        if option == 1:
+            studentList.insertStudent()
 
-    def show_home_page():
-        HomeLabel = Label(main, text="This is the homepage.")
-        HomeLabel.pack()
+        elif option == 2:
+            studentList.getStudentInfo()
 
-    def show_people():
-        PeopleLabel = Label(main, text="These are people.")
-        PeopleLabel.pack()
+        elif option == 3:
+            temp = studentList.make_student()
+            temp.calculate_grade_quartiles()
+        elif option == 4:
+            studentList.sort_grades()
+        else:
+            print("Please enter a number that follows one of the options.")
 
-    def shows_assignments():
-        AssignmentsLabel = Label(main, text="These are assignments.")
-        AssignmentsLabel.pack()
-    def shows_grades():
-        GradesLabel = Label(main, text="These are grades.")
-        GradesLabel.pack()
-
-    title = Label(root, text="Classroomverse", font=("Tahoma", 26), bg="white", padx=3, pady=3)
-    title.pack(side="top")
-    sidebar = Frame(root, width=200, bg='#CCF7FF', borderwidth=1)
-    sidebar.pack(expand=False, fill='both', side='left', anchor='nw')
-
-    button1 = Button(sidebar, text="Home", padx=10, pady=10, command=show_home_page, relief=GROOVE, bg='#CCF7FF')
-    button2 = Button(sidebar, text="Assignments", padx=10, pady=10, command=shows_assignments, relief=GROOVE, bg='#CCF7FF')
-    button3 = Button(sidebar, text="Grades", padx=10, pady=10, command=shows_grades, relief=GROOVE, bg='#CCF7FF')
-    button4 = Button(sidebar, text="People", padx=10, pady=10, command=show_people, relief=GROOVE, bg='#CCF7FF')
-    button1.pack(fill=X)
-    button2.pack(fill=X)
-    button3.pack(fill=X)
-    button4.pack(fill=X)
-    main = Frame(root, bg='gray', width=500,)
-    main.pack(expand=True, fill='both', side='right')
-    root.mainloop()
-
-if __name__=='__main__':
+if __name__ == '__main__':
     main()
