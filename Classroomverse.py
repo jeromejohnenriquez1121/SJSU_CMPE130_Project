@@ -1,6 +1,9 @@
+
+from tkinter import *
 from school_content import QuickSort, student
 from hashing_function import StudentHashTable
 import NumPy as np
+
 
 def main():
     print("Welcome to Classroomverse")
