@@ -10,17 +10,13 @@ class will take in any array of numbers and sort them. The sort_grades() functio
 student class will make use of this function.
 '''
 
-def get_median_index(array):
-    # like get_median, but it returns median index
-    list_length = len(array) 
-    if (list_length % 2 == 0): # for even # of elements
-        mid1 = int(list_length - 1 / 2)
-        mid2 = int(list_length / 2) 
-        return [mid1, mid2] 
-    else: # for odd # of elements 
-        mid = list_length // 2
-        return [mid] 
-
+def get_median_index(array, lo, hi): 
+    # returns median of 'array'
+    # lo: index 0 of 'array'
+    # hi: last index of 'array'
+    n = hi - lo + 1 
+    n2 = (n + 1) // 2 - 1
+    return n2 + lo  
 
 class QuickSort: 
     # only two functions needed: partition and quicksort
@@ -41,6 +37,7 @@ class QuickSort:
         # now we swap our 'marker' j with the pivot
         collection[pivot], collection[j] = collection[j], collection[pivot] 
         return j 
+
 
 
     def quicksort(self, collection, lo, hi):
@@ -80,26 +77,56 @@ class student:
         # Q3 (upper quartile): median of upper half 
         q1 = 0
         q2 = 0
-        q3 = 0 
+        q3 = 0         
         n1 = len(self.grades) 
         # 1. make sure array is sorted in ascending order
         self.sort_grades() 
         # 2. find median of array to divide it in lower and upper half
-        index_mid = get_median_index(self.grades) # the middle index/indices, in list form!
-        # getting Q1 and Q3 will be different depending on whether or not
-        # array length is odd or even
-        # even: lower half is from 0 to index before first of the two middle numbers, 
-        # upper half is from that index to end
-        # odd: lower half is from 0 to median index, upper half is from median index to end
-        # either way, lower half and upper half are split between index_mid[0]
-        mid = index_mid[0]
+        index_mid = get_median_index(self.grades, 0, n1) 
+        # for [65, 70, 80, 90], index_mid returned 2, i.e. the index of 80
+        # this happened when I tested an 8-element-long list in IDLE too
+        # for even numbers, get_median_index() returns the index of the second median #
+        if (n1 % 2 == 0):
+            num1 = self.grades[index_mid - 1]
+            num2 = self.grades[index_mid]
+            q2 = (num1+num2)/2
+        else:
+            q2 = self.grades[index_mid] 
+        # now to find q1 and q3 
+        # q1: median of lower half
+        # q3: median of upper half
+        lower_half = self.grades[0:index_mid]
+        n2 = len(lower_half) 
+        upper_half = self.grades[index_mid:] 
+        n3 = len(upper_half) 
         
-        lower_half = 
+        # we will use same odd array length vs. even array length process for each half of the array
+        # that we used for the whole array
+        indexmid_2 = get_median_index(lower_half, 0, n2) # median index of lower half
+
+        if (n2 % 2 == 0):
+            num1 = lower_half[indexmid_2 - 1]
+            num2 = lower_half[indexmid_2]
+            q1 = (num1+num2)/2
+        else:
+            q1 = lower_half[indexmid_2]
+
+
+        indexmid_3 = get_median_index(upper_half, 0, n3) # median index of upper half 
+
+        if (n3 % 2 == 0):
+            num1 = upper_half[indexmid_3 - 1]
+            num2 = upper_half[indexmid_3]
+            q3 = (num1+num2)/2 
+        else:
+            q3 = upper_half[indexmid_3]
+
+        newlist = [q1, q2, q3]
+        self.quartiles = newlist.copy() 
 
     def get_quartiles(self):
         return self.quartiles 
-        
-
+    
 
     def calculate_average(self):
         # get average grade
