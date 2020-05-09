@@ -35,3 +35,8 @@ avg = saima.get_average()
 print(f"Average: {avg}") 
 
 # third test: show if student is doing well or not
+
+# fourth test: get quartiles
+saima.calculate_grade_quartiles() 
+q1_to_q3 = saima.get_quartiles()
+print(q1_to_q3) 

@@ -10,23 +10,17 @@ class will take in any array of numbers and sort them. The sort_grades() functio
 student class will make use of this function.
 '''
 
-def get_median(array):
-    # if length of array is odd, median is just middle number 
-    # if length of array is even, median is avg of middle two numbers
+def get_median_index(array):
+    # like get_median, but it returns median index
     list_length = len(array) 
-    if (list_length % 2 == 0):
-        # process
+    if (list_length % 2 == 0): # for even # of elements
         mid1 = int(list_length - 1 / 2)
         mid2 = int(list_length / 2) 
-        return (array[mid1] + array[mid2]) / 2
-
-    else:
-        # notice - if we have an array of, say, 7 elements, the indices are 0-6
-        # and the middle element's index is always half of the highest index 
-        # (i.e. half of (len(array) - 1))
-        # dividing list length by 2 with int division will have same effect 
+        return [mid1, mid2] 
+    else: # for odd # of elements 
         mid = list_length // 2
-        return array[mid] 
+        return [mid] 
+
 
 class QuickSort: 
     # only two functions needed: partition and quicksort
@@ -77,9 +71,7 @@ class student:
     # calls quicksort function from QuickSort class
     def sort_grades(self):
         n = len(self.grades) 
-        QuickSort().quicksort(self.grades, 0, n-1)  
- 
-    # TODO: calculate grade quartiles 
+        QuickSort().quicksort(self.grades, 0, n-1)   
 
     def calculate_grade_quartiles(self):
         # calculate grade quartiles with global median function
@@ -89,15 +81,24 @@ class student:
         q1 = 0
         q2 = 0
         q3 = 0 
+        n1 = len(self.grades) 
         # 1. make sure array is sorted in ascending order
         self.sort_grades() 
         # 2. find median of array to divide it in lower and upper half
-        q2 = get_median(self.grades) 
-        median_index = q2.index() 
-        # 3. find median of lower half (from 0 to just before median)
+        index_mid = get_median_index(self.grades) # the middle index/indices, in list form!
+        # getting Q1 and Q3 will be different depending on whether or not
+        # array length is odd or even
+        # even: lower half is from 0 to index before first of the two middle numbers, 
+        # upper half is from that index to end
+        # odd: lower half is from 0 to median index, upper half is from median index to end
+        # either way, lower half and upper half are split between index_mid[0]
+        mid = index_mid[0]
+        
         lower_half = 
-        # 4: find median of upper half (from median to end)
 
+    def get_quartiles(self):
+        return self.quartiles 
+        
 
 
     def calculate_average(self):
