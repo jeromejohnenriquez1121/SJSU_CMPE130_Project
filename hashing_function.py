@@ -15,7 +15,7 @@ def make_student():
 
     newStudent['email'] = input('Please give Student Email: ')
     print("\n Student", newStudent['name'], "created.")
-    s = student(newStudent['name'], newStudent['student_id'], newStudent['email'])
+    s = student(newStudent['name'], newStudent['student_id'], newStudent['email'], grades=[], avg=0, quartiles=[], completed = False)
     return s
 
 
