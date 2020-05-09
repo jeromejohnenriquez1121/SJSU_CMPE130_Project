@@ -10,6 +10,24 @@ class will take in any array of numbers and sort them. The sort_grades() functio
 student class will make use of this function.
 '''
 
+def get_median(array):
+    # if length of array is odd, median is just middle number 
+    # if length of array is even, median is avg of middle two numbers
+    list_length = len(array) 
+    if (list_length % 2 == 0):
+        # process
+        mid1 = int(list_length - 1 / 2)
+        mid2 = int(list_length / 2) 
+        return (array[mid1] + array[mid2]) / 2
+
+    else:
+        # notice - if we have an array of, say, 7 elements, the indices are 0-6
+        # and the middle element's index is always half of the highest index 
+        # (i.e. half of (len(array) - 1))
+        # dividing list length by 2 with int division will have same effect 
+        mid = list_length // 2
+        return array[mid] 
+
 class QuickSort: 
     # only two functions needed: partition and quicksort
     # 'collection': the array to be sorted
@@ -40,12 +58,13 @@ class QuickSort:
 
 
 class student: 
-    def __init__(self, name, student_id, email, grades=[], avg=0): 
+    def __init__(self, name, student_id, email, grades=[], avg=0, quartiles=[]): 
         self.name = name
         self.student_id = student_id
         self.email = email
         self.grades = grades
         self.avg = avg
+        self.quartiles = quartiles 
     
     def add_grade(self): 
         # adds a grade to the 'grades' list
@@ -55,18 +74,31 @@ class student:
         letter_grade = (pts / total) * 100 
         self.grades.append(letter_grade) 
 
-    # calls quicksort function from SelectionSort class
+    # calls quicksort function from QuickSort class
     def sort_grades(self):
         n = len(self.grades) 
         QuickSort().quicksort(self.grades, 0, n-1)  
  
     # TODO: calculate grade quartiles 
-    # TODO: write function that shows if student is doing well or needs improvement
+
+    def calculate_grade_quartiles(self):
+        # calculate grade quartiles with global median function
+        # Q1 (lower quartile): median of lower half
+        # Q2: median
+        # Q3 (upper quartile): median of upper half 
+        q1 = 0
+        q2 = 0
+        q3 = 0 
+        # 1. make sure array is sorted in ascending order
+        self.sort_grades() 
+        # 2. find median of array to divide it in lower and upper half
+        q2 = get_median(self.grades) 
+        median_index = q2.index() 
+        # 3. find median of lower half (from 0 to just before median)
+        lower_half = 
+        # 4: find median of upper half (from median to end)
 
 
-    def get_grade_quartiles(self):
-        # calculate grade quartiles
-        pass
 
     def calculate_average(self):
         # get average grade
