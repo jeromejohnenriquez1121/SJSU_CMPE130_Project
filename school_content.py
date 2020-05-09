@@ -132,13 +132,9 @@ class student:
         n2 = len(lower_half)
         upper_half = self.grades[index_mid:]
         n3 = len(upper_half)
-
         # we will use same odd array length vs. even array length process for each half of the array
         # that we used for the whole array
-        indexmid_2 = get_median_index(lower_half, 0, n2)  # median index of lower half
-            q2 = (num1+num2)/2
-        else:
-            q2 = self.grades[index_mid] 
+   
         # now to find q1 and q3 
         # q1: median of lower half
         # q3: median of upper half
