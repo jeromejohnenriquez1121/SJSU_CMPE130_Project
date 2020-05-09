@@ -13,6 +13,7 @@ while True:
     print("[4]. Make grade calculations for a student\n")
     print("[5]. Print the Student List\n")
     print("[6]. To Exit the Program\n")
+    print("[7]. To generate entire class report (creates a .txt file showing report)\n")
 
     option = input()
 
@@ -66,6 +67,11 @@ while True:
     elif option == "6":
         print("Program exited")
         break
+
+    elif option == "7":
+        f = open("classReport.txt", "w+")
+        f.write(str(S))
+
 
     else:
         print("Choose the correct option. Please Try Again")

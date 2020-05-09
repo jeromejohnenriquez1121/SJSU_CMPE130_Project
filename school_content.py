@@ -57,7 +57,7 @@ class student:
             ret += "Grades:\t" + str(self.grades) + "\n"
             ret += "Average:\t" + str(self.avg) + "\n"
             ret += "Quartiles:\t" + str(self.quartiles) + "\n"
-            self.student_status()
+            ret += "STATUS:\t" + self.student_status() + "\n"
         else:
             print("*** Grades calculations have not been made for this student yet ***")
         return ret
@@ -170,13 +170,14 @@ class student:
         # 90-99: 'excellent/amazing'
         passing = 70.00
         temp_name = self.name
+        ret = ""
         if (self.avg < passing):
-            print(
-                f"{temp_name} has a low grade in the class and needs to improve. They should do the assignments and try to get high scores on the exams to raise their grade")
+            ret = temp_name + " has a low grade in the class and needs to improve. They should do the assignments and try to get high scores on the exams to raise their grade\n"
         elif (self.avg >= passing and self.avg <= 79):
-            print(
-                f"{temp_name} is passing the class, but could be doing much better. They should keep up with the assignments and study hard for the exams.")
+            ret = temp_name + " is passing the class, but could be doing much better. They should keep up with the assignments and study hard for the exams.\n"
         elif (self.avg >= 80 and self.avg <= 89):
-            print(f"{temp_name} has a good grade in the class and can bump it up to an A if they do well in the exams.")
+            ret = temp_name + " has a good grade in the class and can bump it up to an A if they do well in the exams.\n"
         else:
-            print(f"{temp_name}'s grade is excellent! To keep it up, they should still try and do well on the exams.")
+            ret = temp_name + "'s grade is excellent! To keep it up, they should still try and do well on the exams.\n"
+
+        return ret
