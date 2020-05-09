@@ -29,6 +29,6 @@ def main():
         elif option == 4:
             id = int(input("Enter ID: "))
             temp = studentList.getStudent(id)
-            temp.student_status
+            temp.student_status()
         else:
             print("Please enter a number that follows one of the options.")
