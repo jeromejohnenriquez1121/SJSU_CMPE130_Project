@@ -14,13 +14,20 @@ def make_student():
             print("Invalid Student ID entered. Please try again.")
 
     newStudent['email'] = input('Please give Student Email: ')
-
     print("\n Student", newStudent['name'], "created.")
-    s = student(newStudent['name'], newStudent['student_id'], newStudent['email'], " ")
+    s = student(newStudent['name'], newStudent['student_id'], newStudent['email'])
     return s
 
 
 class StudentHashTable:
+
+    def __str__(self):
+        ret = ""
+        for s in self.studentList:
+            if s!= "NULL":
+                ret += str(s) + "-x-x-x-x-x-x-x-x-x-x-x-x-x-x\n"
+        return ret
+
     def __init__(self):
         self.studentList = ["NULL"]*100
 
@@ -28,53 +35,49 @@ class StudentHashTable:
         print("Inserting Student")
         newStudent = make_student()
         sID = newStudent.student_id
-        indexNumber = int(sID[6:9]) % len(self.studentList)
-
-        for e in self.studentList:
-            if e != "NULL" and e.email == newStudent.email:
-                print("Student with the same email already exist. Please Try again")
-                return
+        sEmail = newStudent.email
+        indexNumber = int(sID[7:9]) % len(self.studentList)
 
         if self.studentList[indexNumber] == "NULL":
             self.studentList[indexNumber] = newStudent
-            print(newStudent.name, "added to the table.")
-        else:
-            while(1):
-                if self.studentList[indexNumber].student_id == newStudent.student_id or \
-                        self.studentList[indexNumber].email == newStudent.email:
-                    print("Student with this ID or Email is already added! Cannot make duplicate entry.\n\n")
-                    break
-                elif self.studentList[indexNumber] == "NULL":
-                    self.studentList[indexNumber] = student
-                    print(newStudent.name, "added to the table\n\n")
-                    break
+            print(newStudent.name, "added to the table at index",indexNumber,"\n\n")
+            return
+
+        elif self.studentList[indexNumber] != "NULL":
+            while True:
+                if self.studentList[indexNumber] == "NULL":
+                    self.studentList[indexNumber] = newStudent
+                    print(newStudent.name, "added to the table at index", indexNumber,"\n\n")
+                    return
+                elif self.studentList[indexNumber].student_id == sID:
+                    print("Student is already added! Cannot make duplicate entry.\n\n")
+                    return
                 indexNumber = (indexNumber + 1) % len(self.studentList)
 
     def getStudentInfo(self, sID):
-        indexNumber = int(sID[6:8]) % len(self.studentList)
+        indexNumber = int(sID[7:9]) % len(self.studentList)
 
         if self.studentList[indexNumber].student_id == sID:
             print(self.studentList[indexNumber])
             return
         else:
-            while indexNumber != len(self.studentList) and self.studentList[indexNumber] != "NULL":
+            while self.studentList[indexNumber] != "NULL":
                 if self.studentList[indexNumber].student_id == sID:
                     print(self.studentList[indexNumber])
                     return
                 indexNumber = (indexNumber + 1) % len(self.studentList)
-        print("Student with Student ID " + sID + " is not found\n\n")
+        print("Student with Student ID [" + sID + "] is not found\n\n")
         return
 
+    def getStudent(self,sID):
+        indexNumber = int(sID[7:9]) % len(self.studentList)
 
-
-
-
-
-
-
-
-
-
-
-
-
+        if self.studentList[indexNumber].student_id == sID:
+            return self.studentList[indexNumber]
+        else:
+            while self.studentList[indexNumber] != "NULL":
+                if self.studentList[indexNumber].student_id == sID:
+                    return self.studentList[indexNumber]
+                indexNumber = (indexNumber + 1) % len(self.studentList)
+        print("Student with Student ID [" + sID + "] is not found\n\n")
+        return

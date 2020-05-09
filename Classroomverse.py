@@ -1,4 +1,6 @@
 from tkinter import *
+from school_content import *
+from hashing_function import *
 
 
 def main():
